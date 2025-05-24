@@ -1,0 +1,7 @@
+[
+  { "tipo": "PM2.5 (µg/m³)", "valor": 35.4 },
+  { "tipo": "PM10 (µg/m³)", "valor": 50.2 },
+  { "tipo": "NO₂ (ppb)", "valor": 18.9 },
+  { "tipo": "CO (ppm)", "valor": 0.7 },
+  { "tipo": "O₃ (ppb)", "valor": 23.5 }
+]

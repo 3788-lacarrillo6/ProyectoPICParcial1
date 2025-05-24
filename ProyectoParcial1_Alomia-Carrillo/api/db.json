@@ -1,0 +1,56 @@
+
+
+{
+  "calidad-aire": [
+    {
+      "id": 1,
+      "pais": "Ecuador",
+      "ciudad": "Quito",
+      "pm2_5": 35.4,
+      "pm10": 48.1,
+      "co": 0.7,
+      "o3": 23.5,
+      "no2": 18.9
+    },
+    {
+      "id": 2,
+      "pais": "Colombia",
+      "ciudad": "Bogotá",
+      "pm2_5": 42.8,
+      "pm10": 65.3,
+      "co": 0.9,
+      "o3": 20.1,
+      "no2": 25.2
+    },
+    {
+      "id": 3,
+      "pais": "México",
+      "ciudad": "Ciudad de México",
+      "pm2_5": 51.0,
+      "pm10": 70.4,
+      "co": 1.1,
+      "o3": 30.2,
+      "no2": 33.5
+    },
+    {
+      "id": 4,
+      "pais": "Chile",
+      "ciudad": "Santiago",
+      "pm2_5": 28.6,
+      "pm10": 44.3,
+      "co": 0.6,
+      "o3": 18.8,
+      "no2": 12.1
+    },
+    {
+      "id": 5,
+      "pais": "Argentina",
+      "ciudad": "Buenos Aires",
+      "pm2_5": 39.2,
+      "pm10": 50.9,
+      "co": 0.8,
+      "o3": 24.7,
+      "no2": 16.4
+    }
+  ]
+}
