@@ -7,7 +7,8 @@ const rutasComponentes = {
   'air-quality-chart': 'components/air-quality-chart.js',
   'user-recommendations': 'components/user-recommendations.js',
   'data-crud': 'components/data-crud.js',
-  'educational-section': 'components/educational-section.js'
+  'educational-section': 'components/educational-section.js',
+  'about-team': 'components/about-team.js'
 };
 
 window.cargarComponente = (nombre) => {

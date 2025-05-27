@@ -1,7 +1,10 @@
+// Definición de un Web Component personalizado para mostrar artículos educativos
 class EducationalSection extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }); // Crea un Shadow DOM aislado
+
+    // Datos estáticos: lista de artículos educativos con título, descripción e imagen
     this.articulos = [
       {
         titulo: "¿Qué es el PM2.5?",
@@ -21,92 +24,96 @@ class EducationalSection extends HTMLElement {
     ];
   }
 
+  // Método que se ejecuta automáticamente cuando el componente se monta en el DOM
   connectedCallback() {
-    this.render();
+    this.render(); // Llama al método render para mostrar el contenido
   }
 
+  // Renderiza la interfaz HTML y CSS del componente
   render = () => {
-  const style = `
-    <style>
-      :host {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-      }
+    const style = `
+      <style>
+        :host {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+        }
 
-      .contenedor {
-        max-width: 1000px;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        font-family: Arial, sans-serif;
-      }
+        .contenedor {
+          max-width: 1000px;
+          width: 100%;
+          padding: 20px;
+          box-sizing: border-box;
+          text-align: center;
+          font-family: Arial, sans-serif;
+        }
 
-      h3 {
-        margin-bottom: 20px;
-        font-size: 1.6rem;
-        color: #222;
-      }
+        h3 {
+          margin-bottom: 20px;
+          font-size: 1.6rem;
+          color: #222;
+        }
 
-      .educativo {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
+        .educativo {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+        }
 
-      .card {
-        background: #fff;
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
+        .card {
+          background: #fff;
+          padding: 16px;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+        }
 
-      .card:hover {
-        transform: translateY(-5px);
-      }
+        .card:hover {
+          transform: translateY(-5px); /* Animación al pasar el cursor */
+        }
 
-      .card img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
+        .card img {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+        }
 
-      .card h4 {
-        margin: 0 0 8px 0;
-        font-size: 1.1rem;
-        color: #333;
-      }
+        .card h4 {
+          margin: 0 0 8px 0;
+          font-size: 1.1rem;
+          color: #333;
+        }
 
-      .card p {
-        color: #555;
-        font-size: 0.95rem;
-      }
-    </style>
-  `;
+        .card p {
+          color: #555;
+          font-size: 0.95rem;
+        }
+      </style>
+    `;
 
-  const contenido = this.articulos.map(a => `
-    <div class="card">
-      <img src="${a.imagen}" alt="Icono">
-      <h4>${a.titulo}</h4>
-      <p>${a.descripcion}</p>
-    </div>
-  `).join('');
-
-  this.shadowRoot.innerHTML = `
-    ${style}
-    <div class="contenedor">
-      <h3>Sección Educativa</h3>
-      <div class="educativo">
-        ${contenido}
+    // Genera dinámicamente el contenido de cada tarjeta educativa
+    const contenido = this.articulos.map(a => `
+      <div class="card">
+        <img src="${a.imagen}" alt="Icono">
+        <h4>${a.titulo}</h4>
+        <p>${a.descripcion}</p>
       </div>
-    </div>
-  `;
+    `).join('');
+
+    // Inserta el estilo y contenido HTML dentro del shadow DOM
+    this.shadowRoot.innerHTML = `
+      ${style}
+      <div class="contenedor">
+        <h3>Sección Educativa</h3>
+        <div class="educativo">
+          ${contenido}
+        </div>
+      </div>
+    `;
+  }
 }
 
-}
-
+// Registra el nuevo componente personalizado como <educational-section>
 customElements.define('educational-section', EducationalSection);

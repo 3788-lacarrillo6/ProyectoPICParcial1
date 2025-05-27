@@ -1,11 +1,11 @@
 class NavSidebar extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }); // Crea un shadow DOM encapsulado
   }
 
   connectedCallback() {
-    this.render();
+    this.render(); // Se llama cuando el componente se inserta en el DOM
   }
 
   render = () => {
@@ -25,7 +25,7 @@ class NavSidebar extends HTMLElement {
                       inset -8px -8px 16px #ffffff;
           box-sizing: border-box;
           font-family: Arial, sans-serif;
-          animation: fadeIn 0.6s ease;
+          animation: fadeIn 0.6s ease; /* Animación de entrada */
         }
 
         ul {
@@ -38,9 +38,10 @@ class NavSidebar extends HTMLElement {
           margin-bottom: 18px;
           opacity: 0;
           transform: translateX(-20px);
-          animation: slideIn 0.4s ease forwards;
+          animation: slideIn 0.4s ease forwards; /* Animación por ítem */
         }
 
+        /* Delay para cada elemento de la lista */
         li:nth-child(1) { animation-delay: 0.1s; }
         li:nth-child(2) { animation-delay: 0.2s; }
         li:nth-child(3) { animation-delay: 0.3s; }
@@ -63,15 +64,17 @@ class NavSidebar extends HTMLElement {
         }
 
         button:hover {
-          color: #007bff;
-          transform: scale(1.03);
+          color: #007bff; /* Cambio de color al pasar el mouse */
+          transform: scale(1.03); /* Efecto de escala */
         }
 
+        /* Estilo para el ítem activo */
         li.active button {
           background: linear-gradient(145deg, #d0e1f9, #f0f8ff);
           color: #007bff;
         }
 
+        /* Definición de animaciones */
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -84,6 +87,7 @@ class NavSidebar extends HTMLElement {
           }
         }
 
+        /* Estilo responsivo para pantallas pequeñas */
         @media (max-width: 768px) {
           aside {
             width: 100%;
@@ -104,21 +108,26 @@ class NavSidebar extends HTMLElement {
       </aside>
     `;
 
-    // Lógica de activación
+    // Selecciona todos los botones y les agrega el evento click
     const buttons = this.shadowRoot.querySelectorAll('button');
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        const target = button.dataset.target;
+        const target = button.dataset.target; // Obtiene el valor del atributo data-target
+
+        // Llama a una función global (fuera del componente) si existe
         if (typeof cargarComponente === 'function') {
           cargarComponente(target);
         }
 
-        // Actualizar clase activa
+        // Remueve la clase 'active' de todos los elementos
         this.shadowRoot.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+        // Agrega la clase 'active' al ítem actual
         button.parentElement.classList.add('active');
       });
     });
   }
 }
 
+// Registra el componente como un elemento personalizado
 customElements.define('nav-sidebar', NavSidebar);
