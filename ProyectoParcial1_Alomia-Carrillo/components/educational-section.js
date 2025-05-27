@@ -26,57 +26,87 @@ class EducationalSection extends HTMLElement {
   }
 
   render = () => {
-    const style = `
-      <style>
-        .educativo {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 20px;
-          font-family: Arial, sans-serif;
-        }
-        .card {
-          background: #fff;
-          padding: 16px;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease;
-        }
-        .card:hover {
-          transform: translateY(-5px);
-        }
-        .card img {
-          width: 50px;
-          height: 50px;
-          margin-bottom: 10px;
-        }
-        .card h4 {
-          margin: 0 0 8px 0;
-          font-size: 1.1rem;
-          color: #333;
-        }
-        .card p {
-          color: #555;
-          font-size: 0.95rem;
-        }
-      </style>
-    `;
+  const style = `
+    <style>
+      :host {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
 
-    const contenido = this.articulos.map(a => `
-      <div class="card">
-        <img src="${a.imagen}" alt="Icono">
-        <h4>${a.titulo}</h4>
-        <p>${a.descripcion}</p>
-      </div>
-    `).join('');
+      .contenedor {
+        max-width: 1000px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
 
-    this.shadowRoot.innerHTML = `
-      ${style}
+      h3 {
+        margin-bottom: 20px;
+        font-size: 1.6rem;
+        color: #222;
+      }
+
+      .educativo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+      }
+
+      .card h4 {
+        margin: 0 0 8px 0;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .card p {
+        color: #555;
+        font-size: 0.95rem;
+      }
+    </style>
+  `;
+
+  const contenido = this.articulos.map(a => `
+    <div class="card">
+      <img src="${a.imagen}" alt="Icono">
+      <h4>${a.titulo}</h4>
+      <p>${a.descripcion}</p>
+    </div>
+  `).join('');
+
+  this.shadowRoot.innerHTML = `
+    ${style}
+    <div class="contenedor">
       <h3>Sección Educativa</h3>
       <div class="educativo">
         ${contenido}
       </div>
-    `;
-  }
+    </div>
+  `;
+}
+
 }
 
 customElements.define('educational-section', EducationalSection);

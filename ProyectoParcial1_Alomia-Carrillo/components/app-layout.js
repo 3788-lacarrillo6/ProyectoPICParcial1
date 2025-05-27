@@ -9,10 +9,10 @@ class AppLayout extends HTMLElement {
     this.render();
   }
 
-toggleNavbar() {
-  const nav = this.shadowRoot.querySelector('nav');
-  nav.classList.toggle('show');
-}
+  toggleNavbar() {
+    const nav = this.shadowRoot.querySelector('nav');
+    nav.classList.toggle('show');
+  }
 
 
   render() {

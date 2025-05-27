@@ -1,3 +1,4 @@
+
 const contenedor = document.getElementById('contenedor-principal');
 
 const rutasComponentes = {

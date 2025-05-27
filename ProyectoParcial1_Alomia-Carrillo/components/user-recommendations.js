@@ -21,41 +21,58 @@ class UserRecommendations extends HTMLElement {
         ];
   }
 
-  render = () => {
-    const style = `
-      <style>
-        .recomendaciones {
-          font-family: Arial, sans-serif;
-          padding: 10px;
-          background: #f8f9fa;
-          border-radius: 10px;
-        }
-        ul {
-          padding-left: 20px;
-        }
-        li {
-          margin-bottom: 8px;
-        }
-        h3 {
-          margin-bottom: 10px;
-          font-size: 1.2rem;
-          color: #333;
-        }
-      </style>
-    `;
+render = () => {
+  const style = `
+    <style>
+      :host {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
 
-    const lista = this.recomendaciones.map(r => `<li>${r.texto}</li>`).join('');
+      .recomendaciones {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+      }
 
-    this.shadowRoot.innerHTML = `
-      ${style}
-      <div class="recomendaciones">
-        <h3>Recomendaciones para protegerte</h3>
-        <ul>
-          ${lista}
-        </ul>
-      </div>
-    `;
-  }
+      ul {
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        color: #333;
+      }
+    </style>
+  `;
+
+  const lista = this.recomendaciones.map(r => `<li>${r.texto}</li>`).join('');
+
+  this.shadowRoot.innerHTML = `
+    ${style}
+    <div class="recomendaciones">
+      <h3>Recomendaciones para protegerte</h3>
+      <ul>
+        ${lista}
+      </ul>
+    </div>
+  `;
+}
+
 }
 
 customElements.define('user-recommendations', UserRecommendations);

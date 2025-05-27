@@ -25,16 +25,41 @@ class AirQualityChart extends HTMLElement {
   render = () => {
     this.shadowRoot.innerHTML = `
       <style>
-        canvas {
-          max-width: 100%;
-          margin-top: 20px;
+        :host {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
         }
+
+        .chart-container {
+          text-align: center;
+          max-width: 800px;
+          width: 100%;
+          padding: 20px;
+          box-sizing: border-box;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
         h3 {
           font-family: Arial, sans-serif;
+          margin-top: 0;
+        }
+
+        canvas {
+          width: 100% !important;
+          height: auto !important;
+          margin-top: 20px;
         }
       </style>
-      <h3>Comparación de PM2.5 y PM10 por Ciudad</h3>
-      <canvas id="airChart"></canvas>
+
+      <div class="chart-container">
+        <h3>Comparación de PM2.5 y PM10 por Ciudad</h3>
+        <canvas id="airChart"></canvas>
+      </div>
     `;
   }
 
