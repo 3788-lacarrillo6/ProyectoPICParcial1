@@ -48,7 +48,7 @@ class FooterComponente extends HTMLElement {
       <footer>
         <div class="footer-content">
           <p>&copy; 2025 AirGuard. Todos los derechos reservados.</p>
-          <p>Desarrollado por <a href="https://tusitio.com" target="_blank">TuNombre</a></p>
+          <p>Desarrollado por <a href="https://tusitio.com" target="_blank">Alomia-Carrillo</a></p>
         </div>
       </footer>
     `;
